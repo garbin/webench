@@ -1,0 +1,10 @@
+module.exports = {
+	duration: '1m',
+        connections: 100,
+        threads:1,
+        timeout: 300, 
+        latency: true,
+        header: {},
+        method: "post",
+        body: {}
+}
