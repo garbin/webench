@@ -1,0 +1,40 @@
+{
+  "name": "webench",
+  "version": "1.0.0",
+  "description": "An easy to use modern load testing tool for the web, based on the wrk project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "bin": {
+    "webench": "./bin/webench"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garbin/webench.git"
+  },
+  "keywords": [
+    "load",
+    "test",
+    "web",
+    "http",
+    "benchmark",
+    "modern",
+    "wrk"
+  ],
+  "author": "Garbin Huang <garbinh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garbin/webench/issues"
+  },
+  "homepage": "https://github.com/garbin/webench",
+  "dependencies": {
+    "async": "^0.9.0",
+    "bunyan": "^1.2.0",
+    "cli-table": "^0.3.0",
+    "commander": "^2.4.0",
+    "moment": "^2.8.3",
+    "progress": "^1.1.8",
+    "string": "^2.2.0"
+  }
+}
