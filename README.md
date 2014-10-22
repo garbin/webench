@@ -49,8 +49,6 @@ comming soon
 ### POST, PUT, DELETE support
 comming soon
 
-### Customer indexer
-
 ## License
 
 elasticsearch-reindex is licensed under the [MIT License](http://opensource.org/licenses/MIT).
