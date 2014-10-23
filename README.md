@@ -22,8 +22,18 @@ module.exports = {
   duration: '30s',
   connections: 400,
   threads:12,
-  show_error_requests: true,
-  target: 'http://127.0.0.1:8080/index.html'
+  target: 'http://192.168.3.207:9200/listening_v3/sina_weibo/_search'
+  // method: "GET",
+  // stdout: false,
+  // header: './header',
+  // body: './post.body',
+  // show_error_requests: true,
+  /*
+  onResponse: function  (res) {
+    console.log(res.body);
+  },
+  */
+  // report: function  (summary, latency, requests) { },
 };
 ```
 
@@ -58,7 +68,6 @@ module.exports = {
   duration: '30s',
   connections: 400,
   threads:12,
-  show_error_requests: true,
   list: './path.list',
   target: 'http://127.0.0.1:8080/index.html'
 };
@@ -80,7 +89,7 @@ module.exports = {
   duration: '30s',
   connections: 400,
   threads:12,
-  show_error_requests: true,
+  method: "post",
   body: './post.body', // here
   target: 'http://127.0.0.1:8080/index.html'
 };
