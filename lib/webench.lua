@@ -12,6 +12,7 @@ json = require('json')
 
 paths   = {}
 current = 1
+emit_response = 0
 
 init = function(args)
   wrk.init(args)
@@ -21,6 +22,8 @@ init = function(args)
       k, v = string.match(arg, ":(%a+)#(.+)")
       if k == 'method' then
         wrk.method = v
+      elseif k == 'response' then
+        emit_response = 1
       elseif k == 'body' then
         local f = io.open(v, 'r')
         if f then
@@ -75,7 +78,7 @@ request = function()
 end
 
 response = function(status, headers, body)
-  if status > 399 or status < 200 then
+  if emit_response == 1 then
     io.write(('RESPONSE:' .. json.encode({status = status, headers = headers, body = string.gsub(body, "(\n|\r)", "")})).. "\n")
   end
 end
@@ -93,3 +96,5 @@ done = function(summary, latency, requests)
   end
   io.write('DONE:' .. json.encode({summary=summary, latency=latency_statics, requests=requests_statics}) .. "\n")
 end
+
+

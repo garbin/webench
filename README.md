@@ -27,7 +27,6 @@ module.exports = {
   // stdout: false,
   // header: './header',
   // body: './post.body',
-  // show_error_requests: true,
   /*
   onResponse: function  (res) {
     console.log(res.body);

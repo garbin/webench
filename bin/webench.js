@@ -11,7 +11,7 @@ var Webench = require('../lib/webench'),
     async   = require('async');
 
 cli
-.version('1.0.5')
+.version('1.0.6')
 .option('-c, --config   [value]', 'load testing config')
 .option('-l, --log_path [value]', 'log path', 'webench.log')
 .parse(process.argv);
@@ -32,13 +32,6 @@ benchmarking.on('stderr', function(err) {
     console.error("Stderr " + err);
 });
 
-benchmarking.on('response', config.onResponse ? config.onResponse : function(response) {
-  if (response.status > 399) {
-    if (config.show_error_requests) {
-      console.log("Request Error: " + response.status);
-    }
-  }
-});
 
 console.log('Testing....');
 
@@ -103,6 +96,10 @@ async.waterfall([
     }
     if (config.header) {
       wrk_args.push(':header#' + fs.realpathSync(config.header));
+    }
+    if (config.onResponse) {
+      wrk_args.push(':response#1');
+      benchmarking.on('response', config.onResponse);
     }
     benchmarking.run(wrk, wrk_args);
   }
