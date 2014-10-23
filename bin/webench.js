@@ -11,7 +11,7 @@ var Webench = require('../lib/webench'),
     async   = require('async');
 
 cli
-.version('1.0.3')
+.version('1.0.4')
 .option('-c, --config   [value]', 'load testing config')
 .option('-l, --log_path [value]', 'log path', 'webench.log')
 .parse(process.argv);
