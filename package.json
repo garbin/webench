@@ -1,6 +1,6 @@
 {
   "name": "webench",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An easy to use modern load testing tool for the web, based on the wrk project",
   "main": "index.js",
   "scripts": {

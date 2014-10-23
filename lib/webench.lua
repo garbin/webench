@@ -75,7 +75,6 @@ request = function()
 end
 
 response = function(status, headers, body)
-  io.write(body)
   if status > 399 or status < 200 then
     io.write(('RESPONSE:' .. json.encode({status = status, headers = headers})).. "\n")
   end
