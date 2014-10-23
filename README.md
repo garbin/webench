@@ -90,7 +90,6 @@ Then run the following command:
 ```
 $ webench -c localhost.js
 ```
-
 ## License
 
-elasticsearch-reindex is licensed under the [MIT License](http://opensource.org/licenses/MIT).
+webench is licensed under the [MIT License](http://opensource.org/licenses/MIT).
