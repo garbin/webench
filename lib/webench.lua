@@ -23,8 +23,20 @@ init = function(args)
         wrk.method = v
       elseif k == 'body' then
         local f = io.open(v, 'r')
-        if file then
+        if f then
           wrk.body = f:read('*all')
+          f:close()
+        else
+          io.write("ERROR:".. json.encode({message="Request body not exists"}) .."\n")
+          os.exit()
+        end
+      elseif k == 'header' then
+        local f = io.open(v, 'r')
+        if f then
+          local headers = json.decode(f:read('*all'))
+          for header_key, header_value in pairs(headers) do
+            wrk.headers[header_key] = header_value
+          end
           f:close()
         else
           io.write("ERROR:".. json.encode({message="Request body not exists"}) .."\n")
@@ -63,6 +75,7 @@ request = function()
 end
 
 response = function(status, headers, body)
+  io.write(body)
   if status > 399 or status < 200 then
     io.write(('RESPONSE:' .. json.encode({status = status, headers = headers})).. "\n")
   end

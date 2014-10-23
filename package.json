@@ -1,13 +1,13 @@
 {
   "name": "webench",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "An easy to use modern load testing tool for the web, based on the wrk project",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
   },
   "bin": {
-    "webench": "./bin/webench"
+    "webench": "./bin/webench.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,6 @@
     "cli-table": "^0.3.0",
     "commander": "^2.4.0",
     "moment": "^2.8.3",
-    "progress": "^1.1.8",
     "string": "^2.2.0"
   }
 }

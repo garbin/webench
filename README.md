@@ -15,7 +15,7 @@ Usage
 -------
 
 ### Quick start
-First of all, create a testing file, we called test.js, content below:
+First of all, create a testing file, we called localhost.js, content below:
 
 ```js
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
 
 Then run the following command:
 ```
-$ webench -c test.js
+$ webench -c localhost.js
 ```
 This runs a benchmark for 30 seconds, using 12 threads, and keeping 400 HTTP connections open.
 
@@ -44,12 +44,52 @@ This runs a benchmark for 30 seconds, using 12 threads, and keeping 400 HTTP con
 
 Advanced feature
 ----------------
-### Multi path support
-comming soon
-### POST, PUT, DELETE support
-comming soon
+### Multi Paths
+Create a file called path.list
 
-### Customer indexer
+```
+/users/1
+/others/1
+```
+
+Put `list` to config file
+```js
+module.exports = {
+  duration: '30s',
+  connections: 400,
+  threads:12,
+  show_error_requests: true,
+  list: './path.list',
+  target: 'http://127.0.0.1:8080/index.html'
+};
+```
+
+
+### Other HTTP method
+Create a file called post.body
+
+```
+{
+  test:1
+}
+```
+
+Put `body` to config file
+```js
+module.exports = {
+  duration: '30s',
+  connections: 400,
+  threads:12,
+  show_error_requests: true,
+  body: './post.body', // here
+  target: 'http://127.0.0.1:8080/index.html'
+};
+```
+
+Then run the following command:
+```
+$ webench -c localhost.js
+```
 
 ## License
 
