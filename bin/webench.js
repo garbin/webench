@@ -11,7 +11,7 @@ var Webench = require('../lib/webench'),
     async   = require('async');
 
 cli
-.version('1.0.4')
+.version('1.0.5')
 .option('-c, --config   [value]', 'load testing config')
 .option('-l, --log_path [value]', 'log path', 'webench.log')
 .parse(process.argv);
@@ -25,7 +25,7 @@ var logger        = bunyan.createLogger({
 });
 
 var config       = require(fs.realpathSync(cli.config));
-var stdout       = config.stdout || true;
+var stdout       = config.stdout;
 var benchmarking = new Webench();
 
 benchmarking.on('stderr', function(err) {
@@ -40,13 +40,13 @@ benchmarking.on('response', config.onResponse ? config.onResponse : function(res
   }
 });
 
+console.log('Testing....');
+
 if (stdout) {
-  console.log('Testing....');
   benchmarking.on('stdout', function(out) {
     console.log(out)
   });
 } else {
-
   benchmarking.on('stderr', function(err) {
     console.log("Stderr " + err);
   });

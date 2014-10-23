@@ -76,7 +76,7 @@ end
 
 response = function(status, headers, body)
   if status > 399 or status < 200 then
-    io.write(('RESPONSE:' .. json.encode({status = status, headers = headers})).. "\n")
+    io.write(('RESPONSE:' .. json.encode({status = status, headers = headers, body = string.gsub(body, "(\n|\r)", "")})).. "\n")
   end
 end
 
