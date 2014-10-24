@@ -48,11 +48,7 @@ init = function(args)
       elseif k == 'list' then
         local f = io.open(v, 'r')
         if f then
-          while true do
-            local line = f:read()
-            if line == nil then break end
-            table.insert(paths, line)
-          end
+          paths = json.decode(f:read('*all'))
           f:close()
         else
           io.write("ERROR:".. json.encode({message="List file not found!"}) .."\n")
@@ -64,14 +60,14 @@ init = function(args)
 end
 
 request = function()
-  path = paths[current]
+  item = paths[current]
   if current < #paths then
     current = current + 1
   else
     current = 1
   end
-  if path then
-    return wrk.format(nil, path)
+  if item then
+    return wrk.format(item.method, item.path, item.headers, item.body)
   else
     return wrk.format(nil)
   end

@@ -1,2 +1,18 @@
-/
-/
+[
+  {
+    "method":"POST",
+    "path":"/listening_v3/sina_weibo/_search",
+    "headers":{
+      "Content-Type": "application/json;"
+    },
+    "body": "{\"size\":1}"
+  },
+  {
+    "method":"POST",
+    "path":"/listening_v3/sina_weibo/_search",
+    "headers":{
+      "Content-Type": "application/json;"
+    },
+    "body": "{\"size\":2}"
+  }
+]
